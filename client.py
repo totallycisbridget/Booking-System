@@ -48,10 +48,6 @@ class App(Tk):
     def place_widgets(self):
         """Place widgets in the main application window.
         """
-        self.placeholderTitle = Label(
-            self, text="Placeholder Heading", style="Header.TLabel"
-        )
-        self.placeholderTitle.pack(pady=20)
 
         
 
