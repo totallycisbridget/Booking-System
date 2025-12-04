@@ -1,0 +1,2 @@
+pywinstyles==1.8
+sv-ttk==2.6.1
