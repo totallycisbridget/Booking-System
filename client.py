@@ -5,6 +5,7 @@ from tkinter.ttk import Style, Label
 
 from client_src.gui_theming import set_window_theme
 from client_src.gui_general import set_window_centered, set_icon_from_path
+from client_src.gui_sidebar import Sidebar
 
 current_dir = Path(__file__).parent # Current running directory of this script
 
@@ -48,7 +49,8 @@ class App(Tk):
     def place_widgets(self):
         """Place widgets in the main application window.
         """
-
+        self.sidebar = Sidebar(self)
+        self.sidebar.pack(side="left", fill="y", padx=5)
         
 
 
