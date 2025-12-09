@@ -1,1 +1,0 @@
-Put this folder into ProgramData\MySQL\MySQL Server 8.0\Data
