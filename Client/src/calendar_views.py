@@ -15,6 +15,16 @@ MAX_MONTH_DAY_HEIGHT = 125
 
 MAX_HEADER_HIGHT = MAX_MONTH_DAY_HEIGHT // 2
 
+WEEKDAYS = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+]
+
 
 class CalendarHelper:
     """Static helpers for generating month and week layouts."""
