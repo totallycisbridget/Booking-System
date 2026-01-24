@@ -23,6 +23,14 @@ class CalendarHelper:
         return month_days
 
 
+class CalendarItem(Frame):
+    """Base widget for calendar cells."""
+
+    def __init__(self, parent: Frame, height: int, width: int):
+        super().__init__(parent, height=height, width=width, style="Card.TFrame")
+        self.pack_propagate(False)  # Prevent frame from resizing to fit contents
+
+
 class CalendarView(Frame):
     """Base class for calendar views."""
 
