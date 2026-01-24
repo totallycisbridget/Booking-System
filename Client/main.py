@@ -7,6 +7,9 @@ from src.gui_general import set_window_centered, set_icon_from_path
 from src.gui_theming import apply_all_theming
 from src.gui_sidebar import Sidebar
 
+from src.calendar_container import CalendarContainer
+from src.calendar_views import CalendarWeekView, CalendarMonthView
+
 current_dir = Path(__file__).parent  # Current running directory of this script
 
 
@@ -52,6 +55,19 @@ class App(Tk):
         Separator(self, orient="vertical").pack(
             side="left", fill="y", padx=(0, self.WIDGET_PADDING)
         )
+        
+        self.calendar_container = CalendarContainer(self)
+        
+        self.calendar_container.add_calendar_tab(
+            "Week", CalendarWeekView(self.calendar_container)
+        )
+        self.calendar_container.add_calendar_tab(
+            "Month", CalendarMonthView(self.calendar_container)
+        )
+        self.calendar_container.pack(
+            side="left", fill="both", expand=True, padx=self.WIDGET_PADDING, pady=self.WIDGET_PADDING
+        )
+        
 
 
 if __name__ == "__main__":
