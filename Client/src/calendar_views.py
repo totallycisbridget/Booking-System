@@ -148,6 +148,12 @@ class CalendarView(Frame):
         """Build the calendar view. To be ran during class specific initialisation for all calendar views."""
         pass
 
+    def build_day_headers(self, calendar_grid: Frame):
+        """Add weekday headers to the provided calendar grid."""
+        for col, day_name in enumerate(WEEKDAYS):
+            header_day = CalendarHeader(calendar_grid, self.theme_colors, day_name)
+            header_day.grid(row=0, column=col, sticky="nsew", padx=1, pady=1)
+
     def set_timeframe(self, year: int, month: int, day: int):
         """Set the timeframe for the calendar view."""
         # Set year, month, day and update selected date
@@ -189,9 +195,7 @@ class CalendarMonthView(CalendarView):
         calendar_grid = Frame(self)
 
         # Create day headers
-        for col, day_name in enumerate(WEEKDAYS):
-            header_day = CalendarHeader(calendar_grid, self.theme_colors, day_name)
-            header_day.grid(row=0, column=col, sticky="nsew", padx=1, pady=1)
+        self.build_day_headers(calendar_grid)
 
         calendar_grid.pack(side="top", fill="y", expand=True)
 
@@ -239,3 +243,10 @@ class CalendarWeekView(CalendarView):
 
         title_label = Label(self, text=label_text, style="Header.TLabel")
         title_label.pack(pady=5)
+
+        calendar_grid = Frame(self)
+
+        # Generate week day headers
+        self.build_day_headers(calendar_grid)
+
+        calendar_grid.pack(side="top", fill="y", expand=True)
