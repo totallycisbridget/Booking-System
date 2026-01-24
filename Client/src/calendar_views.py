@@ -1,7 +1,7 @@
 import datetime
 
 from tkinter.ttk import Frame, Label
-from calendar import Calendar, month_name as MONTHS
+from calendar import Calendar, month_name as MONTHS, day_name as WEEKDAYS
 
 from typing import Optional, TYPE_CHECKING
 
@@ -14,16 +14,6 @@ MAX_DAY_WIDTH = 200
 MAX_MONTH_DAY_HEIGHT = 125
 
 MAX_HEADER_HIGHT = MAX_MONTH_DAY_HEIGHT // 2
-
-WEEKDAYS = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-]
 
 
 class CalendarHelper:
