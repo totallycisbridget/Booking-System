@@ -30,6 +30,28 @@ class CalendarHelper:
 
         return month_days
 
+    @staticmethod
+    def get_full_week_layout(
+        year: int, month: int, day: int, include_other_months: bool = True
+    ) -> list[int]:
+        """Get the full week layout including days from previous and next months."""
+        week = []
+
+        # Get the week layout for the given day
+        week_start = datetime.date(year, month, day) - datetime.timedelta(
+            days=datetime.date(year, month, day).weekday()
+        )
+        for i in range(7):
+            current_day = week_start + datetime.timedelta(days=i)
+            if current_day.month == month:
+                week.append(current_day.day)
+            elif include_other_months:
+                week.append(current_day.day)
+            else:
+                week.append(0)
+
+        return week
+
 
 class CalendarItem(Frame):
     """Base widget for calendar cells."""
@@ -63,9 +85,7 @@ class CalendarHeader(CalendarItem):
 class CalendarDayCell(CalendarItem):
     """Generic calendar day cell widget."""
 
-    def __init__(
-        self, parent: Frame, theme_colors: dict[str, str], day_number: int, height: int
-    ):
+    def __init__(self, parent: Frame, theme_colors: dict[str, str], height: int):
         super().__init__(parent, height=height, width=MAX_DAY_WIDTH)
         # Use canvas instead of multiple labels for better performance
         self.canvas = Canvas(
@@ -96,7 +116,7 @@ class CalendarMonthDayCell(CalendarDayCell):
     """Calendar day cell for month view."""
 
     def __init__(self, parent: Frame, theme_colors: dict[str, str], day_number: int):
-        super().__init__(parent, theme_colors, day_number, MAX_MONTH_DAY_HEIGHT)
+        super().__init__(parent, theme_colors, MAX_MONTH_DAY_HEIGHT)
         self.draw_day_number(day_number, self.default_text_color)
 
 
@@ -183,7 +203,10 @@ class CalendarMonthView(CalendarView):
                     day_cell = CalendarMonthDayCell(
                         calendar_grid, self.theme_colors, day_number
                     )
-                    day_cell.grid(row=row + 1, column=col, sticky="nsew", padx=1, pady=1)
+                    day_cell.grid(
+                        row=row + 1, column=col, sticky="nsew", padx=1, pady=1
+                    )
+
 
 class CalendarWeekView(CalendarView):
     """Calendar week view."""
@@ -200,10 +223,19 @@ class CalendarWeekView(CalendarView):
 
     def build_calendar(self):
         """Build the week view calendar."""
-        # TODO: Placeholder information
-        week_label = Label(
-            self,
-            text=f"Week View: Week of {self.selected_date.strftime('%d %B %Y')}",
-            font=("Arial", 16),
+        layout = CalendarHelper.get_full_week_layout(self.year, self.month, self.day)
+        # Add title saying week range
+        week_start = datetime.date(
+            self.year, self.month, self.day
+        ) - datetime.timedelta(
+            days=datetime.date(self.year, self.month, self.day).weekday()
         )
-        week_label.pack(pady=10)
+        week_end = week_start + datetime.timedelta(days=6)
+
+        if week_start.month == week_end.month:
+            label_text = f"Week of {MONTHS[week_start.month]} {week_start.day} - {week_end.day}, {week_start.year}"
+        else:
+            label_text = f"Week of {MONTHS[week_start.month]} {week_start.day} - {MONTHS[week_end.month]} {week_end.day}, {week_end.year}"
+
+        title_label = Label(self, text=label_text, style="Header.TLabel")
+        title_label.pack(pady=5)
