@@ -3,6 +3,7 @@ from pathlib import Path
 from tkinter import Tk
 
 from src.gui_general import set_window_centered, set_icon_from_path
+from src.gui_theming import apply_all_theming
 
 current_dir = Path(__file__).parent  # Current running directory of this script
 
@@ -12,10 +13,14 @@ class App(Tk):
 
     WINDOW_NAME = "Placeholder Window Title"
     WINDOW_DIMENSIONS = "1700x900"
+    SELECTED_THEME = "dark"  # "dark" or "light"
 
     def __init__(self):
         super().__init__()
         self.iconify()  # Hide window during setup
+
+        # Style setup and theming
+        self.style, self.theme_colors = apply_all_theming(self, self.SELECTED_THEME)
 
         self.title(self.WINDOW_NAME)
         self.geometry(self.WINDOW_DIMENSIONS)
