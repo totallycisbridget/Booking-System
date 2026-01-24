@@ -41,12 +41,16 @@ class CalendarItem(Frame):
 class CalendarHeader(CalendarItem):
     """Header widget for calendar days."""
 
-    def __init__(self, parent: Frame, theme_colors:dict[str,str], day_name: str):
+    def __init__(self, parent: Frame, theme_colors: dict[str, str], day_name: str):
         super().__init__(parent, height=MAX_HEADER_HIGHT, width=MAX_DAY_WIDTH)
         self.config(style="TButton")
-        
-        
-        label = Label(self, text=day_name, style="Large.TLabel", background=theme_colors["-buttonbg"])
+
+        label = Label(
+            self,
+            text=day_name,
+            style="Large.TLabel",
+            background=theme_colors["-buttonbg"],
+        )
         label.pack(
             expand=True,
             anchor="center",
@@ -61,7 +65,7 @@ class CalendarView(Frame):
     def __init__(
         self,
         parent: "CalendarContainer",
-        theme_colors:dict[str,str],
+        theme_colors: dict[str, str],
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
@@ -103,7 +107,7 @@ class CalendarMonthView(CalendarView):
     def __init__(
         self,
         parent: CalendarContainer,
-        theme_colors:dict[str,str],
+        theme_colors: dict[str, str],
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
@@ -137,7 +141,7 @@ class CalendarWeekView(CalendarView):
     def __init__(
         self,
         parent: CalendarContainer,
-        theme_colors:dict[str,str],
+        theme_colors: dict[str, str],
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
