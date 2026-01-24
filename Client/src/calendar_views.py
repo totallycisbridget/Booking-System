@@ -13,6 +13,7 @@ INTERNAL_BORDER_PADDING = 4
 
 MAX_DAY_WIDTH = 200
 MAX_MONTH_DAY_HEIGHT = 125
+MAX_WEEK_DAY_HEIGHT = MAX_MONTH_DAY_HEIGHT * 5
 
 MAX_HEADER_HIGHT = MAX_MONTH_DAY_HEIGHT // 2
 
@@ -119,6 +120,12 @@ class CalendarMonthDayCell(CalendarDayCell):
         super().__init__(parent, theme_colors, MAX_MONTH_DAY_HEIGHT)
         self.draw_day_number(day_number, self.default_text_color)
 
+class CalendarWeekDayCell(CalendarDayCell):
+    """Calendar day cell for week view."""
+
+    def __init__(self, parent: Frame, theme_colors: dict[str, str], day_number: int):
+        super().__init__(parent, theme_colors, MAX_WEEK_DAY_HEIGHT)
+        self.draw_day_number(day_number, self.default_text_color)
 
 class CalendarView(Frame):
     """Base class for calendar views."""
