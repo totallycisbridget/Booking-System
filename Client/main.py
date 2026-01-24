@@ -59,10 +59,10 @@ class App(Tk):
         self.calendar_container = CalendarContainer(self)
         
         self.calendar_container.add_calendar_tab(
-            "Week", CalendarWeekView(self.calendar_container)
+            "Week", CalendarWeekView(self.calendar_container, self.theme_colors)
         )
         self.calendar_container.add_calendar_tab(
-            "Month", CalendarMonthView(self.calendar_container)
+            "Month", CalendarMonthView(self.calendar_container, self.theme_colors)
         )
         self.calendar_container.pack(
             side="left", fill="both", expand=True, padx=self.WIDGET_PADDING, pady=self.WIDGET_PADDING

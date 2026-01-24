@@ -29,10 +29,12 @@ class CalendarView(Frame):
     def __init__(
         self,
         parent: "CalendarContainer",
+        theme_colors:dict[str,str],
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
     ):
+        self.theme_colors = theme_colors
         super().__init__(parent)
         # Initialize date to today if not provided
         today = datetime.date.today()
@@ -69,11 +71,12 @@ class CalendarMonthView(CalendarView):
     def __init__(
         self,
         parent: CalendarContainer,
+        theme_colors:dict[str,str],
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
     ):
-        super().__init__(parent, year, month, day)
+        super().__init__(parent, theme_colors, year, month, day)
 
     def build_calendar(self):
         """Build the month view calendar."""
@@ -93,11 +96,12 @@ class CalendarWeekView(CalendarView):
     def __init__(
         self,
         parent: CalendarContainer,
+        theme_colors:dict[str,str],
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
     ):
-        super().__init__(parent, year, month, day)
+        super().__init__(parent, theme_colors, year, month, day)
 
     def build_calendar(self):
         """Build the week view calendar."""
