@@ -30,7 +30,8 @@ class App(Tk):
         self.geometry(self.WINDOW_DIMENSIONS)
 
         # Set window icon
-        app_icon_path = current_dir / "assets" / "icon.ico"
+        self.assets_path = current_dir / "assets"
+        app_icon_path = self.assets_path / "icon.ico"
         set_icon_from_path(self, app_icon_path.as_posix())
 
         # Setup Widgets
@@ -46,7 +47,7 @@ class App(Tk):
 
     def place_widgets(self):
         """Place main widgets in the application window."""
-        self.sidebar = Sidebar(self)
+        self.sidebar = Sidebar(self, self.assets_path)
         self.sidebar.pack(side="left", fill="y", padx=self.WIDGET_PADDING)
         Separator(self, orient="vertical").pack(
             side="left", fill="y", padx=(0, self.WIDGET_PADDING)
