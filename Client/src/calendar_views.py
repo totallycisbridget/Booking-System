@@ -1,6 +1,7 @@
 import datetime
 
 from tkinter.ttk import Frame, Label
+from tkinter import Canvas
 from calendar import Calendar, month_name as MONTHS, day_name as WEEKDAYS
 
 from typing import Optional, TYPE_CHECKING
@@ -56,6 +57,38 @@ class CalendarHeader(CalendarItem):
             anchor="center",
             padx=INTERNAL_BORDER_PADDING,
             pady=INTERNAL_BORDER_PADDING,
+        )
+
+
+class CalendarDayCell(CalendarItem):
+    """Generic calendar day cell widget."""
+
+    def __init__(
+        self, parent: Frame, theme_colors: dict[str, str], day_number: int, height: int
+    ):
+        super().__init__(parent, height=height, width=MAX_DAY_WIDTH)
+        # Use canvas instead of multiple labels for better performance
+        self.canvas = Canvas(
+            self, bg=theme_colors.get("-bg", "ffffff"), highlightthickness=0
+        )
+        self.default_text_color = theme_colors.get("-fg", "black")
+        self.accent_text_color = theme_colors.get("-accent", self.default_text_color)
+        self.canvas.pack(
+            fill="both",
+            expand=True,
+            padx=INTERNAL_BORDER_PADDING,
+            pady=INTERNAL_BORDER_PADDING,
+        )
+
+    def draw_day_number(self, day_number: int, text_color: str):
+        """Draw the day number in the top-left corner of the cell."""
+        self.canvas.create_text(
+            0,
+            0,
+            anchor="nw",
+            text=str(day_number),
+            font=("TkDefaultFont", 10, "bold"),
+            fill=text_color,
         )
 
 
