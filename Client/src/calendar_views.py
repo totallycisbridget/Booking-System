@@ -92,6 +92,14 @@ class CalendarDayCell(CalendarItem):
         )
 
 
+class CalendarMonthDayCell(CalendarDayCell):
+    """Calendar day cell for month view."""
+
+    def __init__(self, parent: Frame, theme_colors: dict[str, str], day_number: int):
+        super().__init__(parent, theme_colors, day_number, MAX_MONTH_DAY_HEIGHT)
+        self.draw_day_number(day_number, self.default_text_color)
+
+
 class CalendarView(Frame):
     """Base class for calendar views."""
 
@@ -167,6 +175,15 @@ class CalendarMonthView(CalendarView):
 
         calendar_grid.pack(side="top", fill="y", expand=True)
 
+        # Create month day cells
+        for row, week in enumerate(layout):
+            for col, day_number in enumerate(week):
+                # Ignore days outside the month (represented by 0)
+                if day_number != 0:
+                    day_cell = CalendarMonthDayCell(
+                        calendar_grid, self.theme_colors, day_number
+                    )
+                    day_cell.grid(row=row + 1, column=col, sticky="nsew", padx=1, pady=1)
 
 class CalendarWeekView(CalendarView):
     """Calendar week view."""
