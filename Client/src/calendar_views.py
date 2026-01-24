@@ -1,7 +1,7 @@
 import datetime
 
 from tkinter.ttk import Frame, Label
-from calendar import Calendar
+from calendar import Calendar, month_name as MONTHS
 
 from typing import Optional, TYPE_CHECKING
 
@@ -77,13 +77,14 @@ class CalendarMonthView(CalendarView):
 
     def build_calendar(self):
         """Build the month view calendar."""
-        # TODO: Placeholder information
-        month_label = Label(
-            self,
-            text=f"Month View: {self.selected_date.strftime('%B %Y')}",
-            font=("Arial", 16),
+        layout = CalendarHelper.get_calendar_month_layout(self.year, self.month)
+        
+        # Add title saying month and year
+        month_name = MONTHS[self.month]
+        title_label = Label(
+            self, text=f"{month_name} {self.year}", style="Header.TLabel"
         )
-        month_label.pack(pady=10)
+        title_label.pack(side="top", pady=5)
 
 
 class CalendarWeekView(CalendarView):
