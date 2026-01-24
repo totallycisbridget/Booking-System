@@ -1,11 +1,26 @@
 import datetime
 
 from tkinter.ttk import Frame, Label
+from calendar import Calendar
 
 from typing import Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:  # Avoid circular imports during runtime
     from src.calendar_container import CalendarContainer
+
+
+class CalendarHelper:
+    """Static helpers for generating month and week layouts."""
+
+    @staticmethod
+    def get_calendar_month_layout(year: int, month: int) -> list[list[int]]:
+        """Get the month layout as a list of weeks, each week is a list of day numbers.
+        Days outside the month are represented by 0.
+        """
+        cal = Calendar(firstweekday=0)  # Monday as the first day
+        month_days = cal.monthdayscalendar(year, month)
+
+        return month_days
 
 
 class CalendarView(Frame):
