@@ -8,6 +8,13 @@ from typing import Optional, TYPE_CHECKING
 if TYPE_CHECKING:  # Avoid circular imports during runtime
     from src.calendar_container import CalendarContainer
 
+INTERNAL_BORDER_PADDING = 4
+
+MAX_DAY_WIDTH = 200
+MAX_MONTH_DAY_HEIGHT = 125
+
+MAX_HEADER_HIGHT = MAX_MONTH_DAY_HEIGHT // 2
+
 
 class CalendarHelper:
     """Static helpers for generating month and week layouts."""
@@ -29,6 +36,23 @@ class CalendarItem(Frame):
     def __init__(self, parent: Frame, height: int, width: int):
         super().__init__(parent, height=height, width=width, style="Card.TFrame")
         self.pack_propagate(False)  # Prevent frame from resizing to fit contents
+
+
+class CalendarHeader(CalendarItem):
+    """Header widget for calendar days."""
+
+    def __init__(self, parent: Frame, theme_colors:dict[str,str], day_name: str):
+        super().__init__(parent, height=MAX_HEADER_HIGHT, width=MAX_DAY_WIDTH)
+        self.config(style="TButton")
+        
+        
+        label = Label(self, text=day_name, style="Large.TLabel", background=theme_colors["-buttonbg"])
+        label.pack(
+            expand=True,
+            anchor="center",
+            padx=INTERNAL_BORDER_PADDING,
+            pady=INTERNAL_BORDER_PADDING,
+        )
 
 
 class CalendarView(Frame):
@@ -89,13 +113,22 @@ class CalendarMonthView(CalendarView):
     def build_calendar(self):
         """Build the month view calendar."""
         layout = CalendarHelper.get_calendar_month_layout(self.year, self.month)
-        
+
         # Add title saying month and year
         month_name = MONTHS[self.month]
         title_label = Label(
             self, text=f"{month_name} {self.year}", style="Header.TLabel"
         )
         title_label.pack(side="top", pady=5)
+
+        calendar_grid = Frame(self)
+
+        # Create day headers
+        for col, day_name in enumerate(WEEKDAYS):
+            header_day = CalendarHeader(calendar_grid, self.theme_colors, day_name)
+            header_day.grid(row=0, column=col, sticky="nsew", padx=1, pady=1)
+
+        calendar_grid.pack(side="top", fill="y", expand=True)
 
 
 class CalendarWeekView(CalendarView):
