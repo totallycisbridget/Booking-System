@@ -255,5 +255,11 @@ class CalendarWeekView(CalendarView):
 
         # Generate week day headers
         self.build_day_headers(calendar_grid)
+        
+        for col, day_number in enumerate(layout):
+            day_cell = CalendarWeekDayCell(
+                calendar_grid, self.theme_colors, day_number
+            )
+            day_cell.grid(row=1, column=col, sticky="nsew", padx=1, pady=1)
 
         calendar_grid.pack(side="top", fill="y", expand=True)
