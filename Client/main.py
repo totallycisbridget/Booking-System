@@ -5,7 +5,7 @@ from tkinter.ttk import Separator
 
 from src.gui_general import set_window_centered, set_icon_from_path
 from src.gui_theming import apply_all_theming
-from src.gui_sidebar import Sidebar
+from src.gui_widgets import Sidebar
 
 from src.calendar_container import CalendarContainer
 from src.calendar_views import CalendarWeekView, CalendarMonthView
