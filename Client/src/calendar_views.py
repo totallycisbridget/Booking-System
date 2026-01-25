@@ -204,7 +204,6 @@ class CalendarMonthView(CalendarView):
         # Create day headers
         self.build_day_headers(calendar_grid)
 
-        calendar_grid.pack(side="top", fill="y", expand=True)
 
         # Create month day cells
         for row, week in enumerate(layout):
@@ -217,7 +216,8 @@ class CalendarMonthView(CalendarView):
                     day_cell.grid(
                         row=row + 1, column=col, sticky="nsew", padx=1, pady=1
                     )
-
+                    
+        calendar_grid.pack(side="top", fill="y", expand=True)
 
 class CalendarWeekView(CalendarView):
     """Calendar week view."""
