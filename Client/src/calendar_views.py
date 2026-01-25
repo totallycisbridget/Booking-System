@@ -120,12 +120,14 @@ class CalendarMonthDayCell(CalendarDayCell):
         super().__init__(parent, theme_colors, MAX_MONTH_DAY_HEIGHT)
         self.draw_day_number(day_number, self.default_text_color)
 
+
 class CalendarWeekDayCell(CalendarDayCell):
     """Calendar day cell for week view."""
 
     def __init__(self, parent: Frame, theme_colors: dict[str, str], day_number: int):
         super().__init__(parent, theme_colors, MAX_WEEK_DAY_HEIGHT)
         self.draw_day_number(day_number, self.default_text_color)
+
 
 class CalendarView(Frame):
     """Base class for calendar views."""
@@ -204,7 +206,6 @@ class CalendarMonthView(CalendarView):
         # Create day headers
         self.build_day_headers(calendar_grid)
 
-
         # Create month day cells
         for row, week in enumerate(layout):
             for col, day_number in enumerate(week):
@@ -216,8 +217,12 @@ class CalendarMonthView(CalendarView):
                     day_cell.grid(
                         row=row + 1, column=col, sticky="nsew", padx=1, pady=1
                     )
-                    
+
         calendar_grid.pack(side="top", fill="y", expand=True)
+        
+        # Call the base class build_calendar to finalize
+        super().build_calendar()
+
 
 class CalendarWeekView(CalendarView):
     """Calendar week view."""
@@ -255,11 +260,12 @@ class CalendarWeekView(CalendarView):
 
         # Generate week day headers
         self.build_day_headers(calendar_grid)
-        
+
         for col, day_number in enumerate(layout):
-            day_cell = CalendarWeekDayCell(
-                calendar_grid, self.theme_colors, day_number
-            )
+            day_cell = CalendarWeekDayCell(calendar_grid, self.theme_colors, day_number)
             day_cell.grid(row=1, column=col, sticky="nsew", padx=1, pady=1)
 
         calendar_grid.pack(side="top", fill="y", expand=True)
+        
+        # Call the base class build_calendar to finalize
+        super().build_calendar()
