@@ -10,10 +10,11 @@ if TYPE_CHECKING:  # Avoid circular imports during runtime
     from src.calendar_container import CalendarContainer
 
 INTERNAL_BORDER_PADDING = 4
+CALENDAR_CELL_PADDING = 1
 
 MAX_DAY_WIDTH = 200
-MAX_MONTH_DAY_HEIGHT = 125
-MAX_WEEK_DAY_HEIGHT = MAX_MONTH_DAY_HEIGHT * 5
+MAX_MONTH_DAY_HEIGHT = 115
+MAX_WEEK_DAY_HEIGHT = (MAX_MONTH_DAY_HEIGHT * 6) + (CALENDAR_CELL_PADDING * 2 * 5)
 
 MAX_HEADER_HIGHT = MAX_MONTH_DAY_HEIGHT // 2
 
@@ -189,7 +190,7 @@ class CalendarView(Frame):
         """Add weekday headers to the provided calendar grid."""
         for col, day_name in enumerate(WEEKDAYS):
             header_day = CalendarHeader(calendar_grid, self.theme_colors, day_name)
-            header_day.grid(row=0, column=col, sticky="nsew", padx=1, pady=1)
+            header_day.grid(row=0, column=col, sticky="nsew", padx=CALENDAR_CELL_PADDING, pady=CALENDAR_CELL_PADDING)
 
     def set_timeframe(self, year: int, month: int, day: int):
         """Set the timeframe for the calendar view."""
@@ -275,7 +276,7 @@ class CalendarMonthView(CalendarView):
                         calendar_grid, self.theme_colors, day_number
                     )
                     day_cell.grid(
-                        row=row + 1, column=col, sticky="nsew", padx=1, pady=1
+                        row=row + 1, column=col, sticky="nsew", padx=CALENDAR_CELL_PADDING, pady=CALENDAR_CELL_PADDING
                     )
 
         calendar_grid.pack(side="top", fill="y", expand=True)
@@ -323,7 +324,7 @@ class CalendarWeekView(CalendarView):
 
         for col, day_number in enumerate(layout):
             day_cell = CalendarWeekDayCell(calendar_grid, self.theme_colors, day_number)
-            day_cell.grid(row=1, column=col, sticky="nsew", padx=1, pady=1)
+            day_cell.grid(row=1, column=col, sticky="nsew", padx=CALENDAR_CELL_PADDING, pady=CALENDAR_CELL_PADDING)
 
         calendar_grid.pack(side="top", fill="y", expand=True)
         
