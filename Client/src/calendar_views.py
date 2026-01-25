@@ -2,7 +2,7 @@ import datetime
 
 from tkinter.ttk import Frame, Label, Button, Separator
 from tkinter import Canvas
-from calendar import Calendar, month_name as MONTHS, day_name as WEEKDAYS
+from calendar import Calendar, month_name as MONTHS, day_name as WEEKDAYS, monthrange
 
 from typing import Optional, TYPE_CHECKING
 
@@ -164,17 +164,17 @@ class CalendarView(Frame):
         self.previous_button = Button(
             self.calendar_controls_frame,
             text="< Previous",
-            command=None # No functionality yet
+            command=self._go_to_previous
         )
         self.next_button = Button(
             self.calendar_controls_frame,
             text="Next >",
-            command=None # No functionality yet
+            command=self._go_to_next
         )
         self.set_timeframe_today_button = Button(
             self.calendar_controls_frame,
             text="Today",
-            command=None, # No functionality yet
+            command=self._go_to_today,
             style="Accent.TButton"
         )
         
@@ -203,6 +203,38 @@ class CalendarView(Frame):
         for widget in self.winfo_children():
             widget.destroy()
         self.build_calendar()
+
+    def _shift_month(self, delta_months: int) -> tuple[int, int, int]:
+        """Return year, month, day after shifting the current month by delta_months."""
+        total_months = (self.year * 12 + (self.month - 1)) + delta_months
+        new_year = total_months // 12
+        new_month = total_months % 12 + 1
+        max_day = monthrange(new_year, new_month)[1]
+        new_day = min(self.day, max_day)
+        return new_year, new_month, new_day
+
+    def _go_to_previous(self):
+        """Navigate to the previous week or month based on the view type."""
+        if isinstance(self, CalendarWeekView):
+            new_date = self.selected_date - datetime.timedelta(days=7)
+            self.set_timeframe(new_date.year, new_date.month, new_date.day)
+        else:
+            new_year, new_month, new_day = self._shift_month(-1)
+            self.set_timeframe(new_year, new_month, new_day)
+
+    def _go_to_next(self):
+        """Navigate to the next week or month based on the view type."""
+        if isinstance(self, CalendarWeekView):
+            new_date = self.selected_date + datetime.timedelta(days=7)
+            self.set_timeframe(new_date.year, new_date.month, new_date.day)
+        else:
+            new_year, new_month, new_day = self._shift_month(1)
+            self.set_timeframe(new_year, new_month, new_day)
+
+    def _go_to_today(self):
+        """Navigate to today's date for the active view."""
+        today = datetime.date.today()
+        self.set_timeframe(today.year, today.month, today.day)
 
 
 class CalendarMonthView(CalendarView):
