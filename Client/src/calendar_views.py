@@ -1,6 +1,6 @@
 import datetime
 
-from tkinter.ttk import Frame, Label
+from tkinter.ttk import Frame, Label, Button, Separator
 from tkinter import Canvas
 from calendar import Calendar, month_name as MONTHS, day_name as WEEKDAYS
 
@@ -155,7 +155,35 @@ class CalendarView(Frame):
 
     def build_calendar(self):
         """Build the calendar view. To be ran during class specific initialisation for all calendar views."""
-        pass
+        self.calendar_controls_frame = Frame(self)
+
+        # Give each control column equal weight so the Today button sits in the center column
+        for col in range(3):
+            self.calendar_controls_frame.columnconfigure(col, weight=1)
+        
+        self.previous_button = Button(
+            self.calendar_controls_frame,
+            text="< Previous",
+            command=None # No functionality yet
+        )
+        self.next_button = Button(
+            self.calendar_controls_frame,
+            text="Next >",
+            command=None # No functionality yet
+        )
+        self.set_timeframe_today_button = Button(
+            self.calendar_controls_frame,
+            text="Today",
+            command=None, # No functionality yet
+            style="Accent.TButton"
+        )
+        
+        self.previous_button.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+        self.set_timeframe_today_button.grid(row=0, column=1, padx=5, pady=5)
+        self.next_button.grid(row=0, column=2, padx=5, pady=5, sticky="e")
+        
+        self.calendar_controls_frame.pack(side="bottom", fill="x")
+        Separator(self, orient="horizontal").pack(side="bottom", fill="x")
 
     def build_day_headers(self, calendar_grid: Frame):
         """Add weekday headers to the provided calendar grid."""
