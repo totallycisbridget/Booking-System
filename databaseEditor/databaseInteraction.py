@@ -1,5 +1,6 @@
 import sqlite3, os, sys
 
+
 #region presentTables
 def tableNames(cur): #list tables in database
     cur.execute("SELECT name FROM sqlite_master WHERE type='table';") #geet table names
@@ -11,17 +12,29 @@ def tableColumns(cur, tableName): #column names in specific table
 #endregion
 
 #region insertData
-def tableInsert(conn,  tableName, columns): #insert data into table
+def tableColumnsWithPK(cur, tableName):
+    cur.execute(f"PRAGMA table_info({tableName});")
+    return [(row[1], row[5]) for row in cur.fetchall()]  # (name, is_pk)
+
+def tableInsert(conn, tableName, columns):
     cur = conn.cursor()
+    pkSkip = False #skip primary key columns
 
     inputs = []
-    for col in columns: #go throug each column and get user input
-        val = input(f"{col}: ") 
-        inputs.append(val)
+    insert_columns = []
 
-    placeholders = ",".join("?" for _ in columns) #parametised queries. prevent SQL injection
-    query = f"INSERT INTO {tableName} ({','.join(columns)}) VALUES ({placeholders});"
-    
+    for col, is_pk in columns:
+        if is_pk:
+            continue
+
+        val = input(f"{col}: ").strip()
+        inputs.append(val)
+        insert_columns.append(col)
+
+    placeholders = ",".join("?" for _ in insert_columns)
+    column_list = ",".join(insert_columns)
+
+    query = f"INSERT INTO {tableName} ({column_list}) VALUES ({placeholders});"
     try:
         cur.execute(query, inputs) #execute insert query
         conn.commit() #commit changes to database
@@ -65,18 +78,18 @@ def main():
     baseDir = os.path.join(os.getcwd()) #directory of this file
 
 
-    dbFiles = [f for f in os.listdir(baseDir) if f.endswith(".db")] #just the databasee files
+    #dbFiles = [f for f in os.listdir(baseDir) if f.endswith(".db")] #just the databasee files
     
-    print("Database files found:")
-    for i, f in enumerate(dbFiles): #print each database file with a number (1- database.db))
-        print(f"{i}- {f}") 
+    #print("Database files found:")
+    #for i, f in enumerate(dbFiles): #print each database file with a number (1- database.db))
+        #print(f"{i}- {f}") 
 
 
-    dbName = input("Enter the SQLite database filename (excluding .db): ")
-    print("A new database will be created if it does not exist.") #just what sqlite does, prrobably can stop it but cant be bothered
-    dbName += ".db" #add the .db file extension to name
+    #dbName = input("Enter the SQLite database filename (excluding .db): ")
+    #print("A new database will be created if it does not exist.") #just what sqlite does, prrobably can stop it but cant be bothered
+    #dbName += ".db" #add the .db file extension to name
+    dbName = "bookingSystem.db"
     dbPath = os.path.join(baseDir, dbName)
-
 
     try:
         conn = sqlite3.connect(dbPath) #connect to the database at the given location
