@@ -5,7 +5,7 @@ from tkinter.ttk import Notebook
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:  # Avoid circular imports during runtime
-    from Client.src.calendar_views import (
+    from src.calendar_views import (
         CalendarView,
         CalendarWeekView,
         CalendarMonthView,
