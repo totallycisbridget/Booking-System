@@ -61,17 +61,3 @@ class LocalDataManager:
             return {}
         day_data = month_data.get(str(day).zfill(2), [])
         return day_data
-
-if __name__ == "__main__":
-    storage_path = Path(
-        r"C:\Users\joehb\OneDrive - University of South Wales\Lectures & Workshops\CS2S567 Team Based Software Dev\Project\BookingSystem\BookingSystemUiLive\Client\data"
-    )
-    data_manager = LocalDataManager(storage_path)
-    result = data_manager.validate_and_load_data()
-    if result["state"]:
-        print("Data loaded successfully.")
-        p = data_manager.get_data_at_day(2026, 1, 1)
-        print(p)
-
-    else:
-        print(f"Error loading data: {result['reason']}")
