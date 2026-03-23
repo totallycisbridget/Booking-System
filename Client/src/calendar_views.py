@@ -91,6 +91,8 @@ class CalendarDayCell(CalendarItem):
 
     def __init__(self, parent: Frame, theme_colors: dict[str, str], height: int):
         super().__init__(parent, height=height, width=MAX_DAY_WIDTH)
+        self.theme_colors = theme_colors
+        self.initial_offset_y = 0
         # Use canvas instead of multiple labels for better performance
         self.canvas = Canvas(
             self, bg=theme_colors.get("-bg", "ffffff"), highlightthickness=0
@@ -104,24 +106,143 @@ class CalendarDayCell(CalendarItem):
             pady=INTERNAL_BORDER_PADDING,
         )
 
+    def format_event_time(
+        self,
+        start_time: datetime.time | str | None,
+        end_time: datetime.time | str | None,
+    ) -> str:
+        """Format an event time range for display."""
+
+        def normalize_time(value: datetime.time | str | None) -> str:
+            if isinstance(value, datetime.time):
+                return value.strftime("%H:%M")
+            if isinstance(value, str):
+                try:
+                    return datetime.datetime.strptime(value, "%H:%M").strftime("%H:%M")
+                except ValueError:
+                    return value
+            return ""
+
+        start_str = normalize_time(start_time)
+        end_str = normalize_time(end_time)
+
+        if start_str and end_str:
+            return f"{start_str} - {end_str}"
+        if start_str:
+            return start_str
+        return ""
+
     def draw_day_number(self, day_number: int, text_color: str):
         """Draw the day number in the top-left corner of the cell."""
-        self.canvas.create_text(
+        return self.draw_text(
             0,
             0,
+            str(day_number),
             anchor="nw",
             text=str(day_number),
             font=("TkDefaultFont", 10, "bold"),
             fill=text_color,
         )
 
+    def draw_events(self, events: list[dict], max_lines: int = 0):
+        """Draw a list of event titles for the day."""
+        raise NotImplementedError("Subclasses must implement draw_events method.")
+
+    def draw_text(
+        self,
+        x: int | float,
+        y: int | float,
+        text: str,
+        *,
+        anchor: str = "nw",
+        font: tuple = (),
+        fill: str = "black",
+        width: int | None = None,
+    ) -> int:
+        """Draw text and return its pixel height."""
+        item_id = self.canvas.create_text(
+            x,
+            y,
+            text=text,
+            anchor=anchor,  # pyright: ignore[reportArgumentType]
+            font=font,
+            fill=fill,
+            width=width,  # pyright: ignore[reportArgumentType]
+        )
+        bbox = self.canvas.bbox(item_id)
+        height = (bbox[3] - bbox[1]) if bbox else 0
+        return height
+
+    def draw_line(
+        self,
+        x1: int | float,
+        y1: int | float,
+        x2: int | float,
+        y2: int | float,
+        *,
+        fill: str = "black",
+        width: int = 1,
+    ):
+        """Draw a straight line on the canvas."""
+        return self.canvas.create_line(x1, y1, x2, y2, fill=fill, width=width)
+
 
 class CalendarMonthDayCell(CalendarDayCell):
     """Calendar day cell for month view."""
 
-    def __init__(self, parent: Frame, theme_colors: dict[str, str], day_number: int):
+    def __init__(
+        self,
+        parent: Frame,
+        theme_colors: dict[str, str],
+        day_number: int,
+    ):
         super().__init__(parent, theme_colors, MAX_MONTH_DAY_HEIGHT)
-        self.draw_day_number(day_number, self.default_text_color)
+        self.initial_offset_y = self.draw_day_number(day_number, self.default_text_color)
+
+    def draw_events(self, events: list[dict], max_lines: int = 3):
+        if len(events) == 0 or max_lines <= 0:
+            return
+
+        offset = self.initial_offset_y + 5  # Start below day number with small gap
+        events_shown = 0
+
+        for event in events:
+            if events_shown >= max_lines:
+                # Show "more events" indicator if there are remaining events
+                remaining = len(events) - events_shown
+                self.draw_text(
+                    0,
+                    offset,
+                    f"+ {remaining} more",
+                    anchor="nw",
+                    font=("TkDefaultFont", 8, "italic"),
+                    fill=self.accent_text_color,
+                    width=MAX_DAY_WIDTH - (INTERNAL_BORDER_PADDING * 2),
+                )
+                break
+
+            event_title = event.get("title", "No Title")
+            start_time = event.get("start_time")
+            time_str = self.format_event_time(start_time, None)
+
+            # For month view, show time and title on same line if possible
+            if time_str:
+                display_text = f"{time_str} {event_title}"
+            else:
+                display_text = event_title
+
+            title_height = self.draw_text(
+                0,
+                offset,
+                display_text,
+                anchor="nw",
+                font=("TkDefaultFont", 8),
+                fill=self.default_text_color,
+                width=MAX_DAY_WIDTH - (INTERNAL_BORDER_PADDING * 2),
+            )
+
+            offset += title_height + 2  # Small gap between events
+            events_shown += 1
 
 
 class CalendarWeekDayCell(CalendarDayCell):
@@ -129,7 +250,62 @@ class CalendarWeekDayCell(CalendarDayCell):
 
     def __init__(self, parent: Frame, theme_colors: dict[str, str], day_number: int):
         super().__init__(parent, theme_colors, MAX_WEEK_DAY_HEIGHT)
-        self.draw_day_number(day_number, self.default_text_color)
+        self.initial_offset_y = self.draw_day_number(
+            day_number, self.default_text_color
+        )
+
+    def draw_events(self, events: list[dict], max_lines: int = 6):
+        if len(events) == 0 or max_lines <= 0:
+            return
+
+        offset = self.initial_offset_y  # Start below day number
+
+        for event in events:
+            offset = self.draw_event(event, offset)
+
+    def draw_event(self, event: dict, y_position: int) -> int:
+        event_title = event.get("title", "No Title")
+        start_time = event.get("start_time")
+        end_time = event.get("end_time")
+        time_str = self.format_event_time(start_time, end_time)
+
+        title_height = self.draw_text(
+            0,
+            y_position,
+            event_title,
+            anchor="nw",
+            font=("TkDefaultFont", 10),
+            fill=self.default_text_color,
+            width=MAX_DAY_WIDTH - (INTERNAL_BORDER_PADDING * 2),
+        )
+
+        y_position += title_height
+
+        time_height = self.draw_text(
+            0,
+            y_position,
+            time_str,
+            anchor="nw",
+            font=("TkDefaultFont", 8, "italic"),
+            fill=self.default_text_color,
+            width=MAX_DAY_WIDTH - (INTERNAL_BORDER_PADDING * 2),
+        )
+
+        y_position += time_height
+
+        # Draw horizontal separator line
+        y_position += 2  # Small gap before line
+        self.draw_line(
+            0,
+            y_position,
+            MAX_DAY_WIDTH - (INTERNAL_BORDER_PADDING * 2),
+            y_position,
+            fill=self.theme_colors.get("-border", "grey"),
+        )
+
+        y_position += 4  # Small gap after line
+
+        return y_position  # Return new y_position after drawing event
 
 
 class CalendarView(Frame):
@@ -194,7 +370,18 @@ class CalendarView(Frame):
         """Add weekday headers to the provided calendar grid."""
         for col, day_name in enumerate(WEEKDAYS):
             header_day = CalendarHeader(calendar_grid, self.theme_colors, day_name)
-            header_day.grid(row=0, column=col, sticky="nsew", padx=CALENDAR_CELL_PADDING, pady=CALENDAR_CELL_PADDING)
+
+    def _get_events_for_date(self, date_value: datetime.date) -> list[dict]:
+        """Return events for a specific date if data is available."""
+        if not self.data_manager or not self.data_manager.data_loaded:
+            return []
+        try:
+            events = self.data_manager.get_data_at_day(
+                date_value.year, date_value.month, date_value.day
+            )
+            return events if isinstance(events, list) else []
+        except Exception:
+            return []
 
     def set_timeframe(self, year: int, month: int, day: int):
         """Set the timeframe for the calendar view."""
@@ -279,6 +466,8 @@ class CalendarMonthView(CalendarView):
                 if day_number != 0:
                     day_cell = CalendarMonthDayCell(
                         calendar_grid, self.theme_colors, day_number
+                    day_cell.draw_events(
+                        self._get_events_for_date(date_value), max_lines=3
                     )
                     day_cell.grid(
                         row=row + 1, column=col, sticky="nsew", padx=CALENDAR_CELL_PADDING, pady=CALENDAR_CELL_PADDING
@@ -330,6 +519,7 @@ class CalendarWeekView(CalendarView):
 
         for col, day_number in enumerate(layout):
             day_cell = CalendarWeekDayCell(calendar_grid, self.theme_colors, day_number)
+            day_cell.draw_events(self._get_events_for_date(date_value), max_lines=30)
             day_cell.grid(row=1, column=col, sticky="nsew", padx=CALENDAR_CELL_PADDING, pady=CALENDAR_CELL_PADDING)
 
         calendar_grid.pack(side="top", fill="y", expand=True)
