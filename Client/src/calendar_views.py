@@ -139,8 +139,19 @@ class CalendarDayCell(CalendarItem):
             0,
             str(day_number),
             anchor="nw",
-            text=str(day_number),
             font=("TkDefaultFont", 10, "bold"),
+            fill=text_color,
+        )
+
+    def draw_today_indicator(self, text_color: str):
+        today_text = "Today"
+        x_pos = MAX_DAY_WIDTH / 2
+        return self.draw_text(
+            x_pos,
+            0,
+            today_text,
+            anchor="n",
+            font=("TkDefaultFont", 9),
             fill=text_color,
         )
 
@@ -195,9 +206,14 @@ class CalendarMonthDayCell(CalendarDayCell):
         parent: Frame,
         theme_colors: dict[str, str],
         day_number: int,
+        is_today: bool = False,
     ):
         super().__init__(parent, theme_colors, MAX_MONTH_DAY_HEIGHT)
-        self.initial_offset_y = self.draw_day_number(day_number, self.default_text_color)
+        if is_today:
+            self.initial_offset_y = self.draw_day_number(day_number, self.accent_text_color)
+            self.draw_today_indicator(self.accent_text_color)
+        else:
+            self.initial_offset_y = self.draw_day_number(day_number, self.default_text_color)
 
     def draw_events(self, events: list[dict], max_lines: int = 3):
         if len(events) == 0 or max_lines <= 0:
@@ -248,11 +264,23 @@ class CalendarMonthDayCell(CalendarDayCell):
 class CalendarWeekDayCell(CalendarDayCell):
     """Calendar day cell for week view."""
 
-    def __init__(self, parent: Frame, theme_colors: dict[str, str], day_number: int):
+    def __init__(
+        self,
+        parent: Frame,
+        theme_colors: dict[str, str],
+        day_number: int,
+        is_today: bool = False,
+    ):
         super().__init__(parent, theme_colors, MAX_WEEK_DAY_HEIGHT)
-        self.initial_offset_y = self.draw_day_number(
-            day_number, self.default_text_color
-        )
+        if is_today:
+            self.initial_offset_y = self.draw_day_number(
+                day_number, self.accent_text_color
+            )
+            self.draw_today_indicator(self.accent_text_color)
+        else:
+            self.initial_offset_y = self.draw_day_number(
+                day_number, self.default_text_color
+            )
 
     def draw_events(self, events: list[dict], max_lines: int = 6):
         if len(events) == 0 or max_lines <= 0:
@@ -341,28 +369,26 @@ class CalendarView(Frame):
         # Give each control column equal weight so the Today button sits in the center column
         for col in range(3):
             self.calendar_controls_frame.columnconfigure(col, weight=1)
-        
+
         self.previous_button = Button(
             self.calendar_controls_frame,
             text="< Previous",
-            command=self._go_to_previous
+            command=self._go_to_previous,
         )
         self.next_button = Button(
-            self.calendar_controls_frame,
-            text="Next >",
-            command=self._go_to_next
+            self.calendar_controls_frame, text="Next >", command=self._go_to_next
         )
         self.set_timeframe_today_button = Button(
             self.calendar_controls_frame,
             text="Today",
             command=self._go_to_today,
-            style="Accent.TButton"
+            style="Accent.TButton",
         )
-        
+
         self.previous_button.grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.set_timeframe_today_button.grid(row=0, column=1, padx=5, pady=5)
         self.next_button.grid(row=0, column=2, padx=5, pady=5, sticky="e")
-        
+
         self.calendar_controls_frame.pack(side="bottom", fill="x")
         Separator(self, orient="horizontal").pack(side="bottom", fill="x")
 
@@ -370,6 +396,13 @@ class CalendarView(Frame):
         """Add weekday headers to the provided calendar grid."""
         for col, day_name in enumerate(WEEKDAYS):
             header_day = CalendarHeader(calendar_grid, self.theme_colors, day_name)
+            header_day.grid(
+                row=0,
+                column=col,
+                sticky="nsew",
+                padx=CALENDAR_CELL_PADDING,
+                pady=CALENDAR_CELL_PADDING,
+            )
 
     def _get_events_for_date(self, date_value: datetime.date) -> list[dict]:
         """Return events for a specific date if data is available."""
@@ -460,21 +493,30 @@ class CalendarMonthView(CalendarView):
         self.build_day_headers(calendar_grid)
 
         # Create month day cells
+        today = datetime.date.today()
+
         for row, week in enumerate(layout):
             for col, day_number in enumerate(week):
                 # Ignore days outside the month (represented by 0)
                 if day_number != 0:
+                    date_value = datetime.date(self.year, self.month, day_number)
+                    is_today = date_value == today
                     day_cell = CalendarMonthDayCell(
-                        calendar_grid, self.theme_colors, day_number
+                        calendar_grid, self.theme_colors, day_number, is_today
+                    )
                     day_cell.draw_events(
                         self._get_events_for_date(date_value), max_lines=3
                     )
                     day_cell.grid(
-                        row=row + 1, column=col, sticky="nsew", padx=CALENDAR_CELL_PADDING, pady=CALENDAR_CELL_PADDING
+                        row=row + 1,
+                        column=col,
+                        sticky="nsew",
+                        padx=CALENDAR_CELL_PADDING,
+                        pady=CALENDAR_CELL_PADDING,
                     )
 
         calendar_grid.pack(side="top", fill="y", expand=True)
-        
+
         # Call the base class build_calendar to finalize
         super().build_calendar()
 
@@ -517,12 +559,24 @@ class CalendarWeekView(CalendarView):
         # Generate week day headers
         self.build_day_headers(calendar_grid)
 
+        today = datetime.date.today()
+
         for col, day_number in enumerate(layout):
-            day_cell = CalendarWeekDayCell(calendar_grid, self.theme_colors, day_number)
+            date_value = week_start + datetime.timedelta(days=col)
+            is_today = date_value == today
+            day_cell = CalendarWeekDayCell(
+                calendar_grid, self.theme_colors, day_number, is_today
+            )
             day_cell.draw_events(self._get_events_for_date(date_value), max_lines=30)
-            day_cell.grid(row=1, column=col, sticky="nsew", padx=CALENDAR_CELL_PADDING, pady=CALENDAR_CELL_PADDING)
+            day_cell.grid(
+                row=1,
+                column=col,
+                sticky="nsew",
+                padx=CALENDAR_CELL_PADDING,
+                pady=CALENDAR_CELL_PADDING,
+            )
 
         calendar_grid.pack(side="top", fill="y", expand=True)
-        
+
         # Call the base class build_calendar to finalize
         super().build_calendar()
