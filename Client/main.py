@@ -9,6 +9,7 @@ from src.gui_widgets import Sidebar
 
 from src.calendar_container import CalendarContainer
 from src.calendar_views import CalendarWeekView, CalendarMonthView
+from src.data_local_manager import LocalDataManager
 
 current_dir = Path(__file__).parent  # Current running directory of this script
 
@@ -56,13 +57,19 @@ class App(Tk):
             side="left", fill="y", padx=(0, self.WIDGET_PADDING)
         )
         
+        data_path = current_dir / "data"
+        self.data_manager = LocalDataManager(data_path)
+        load_result = self.data_manager.validate_and_load_data()
+        if not load_result.get("state", False):
+            print(f"Failed to load events data: {load_result.get('reason', 'Unknown error')}")
+
         self.calendar_container = CalendarContainer(self)
         
         self.calendar_container.add_calendar_tab(
-            "Week", CalendarWeekView(self.calendar_container, self.theme_colors)
+            "Week", CalendarWeekView(self.calendar_container, self.theme_colors, data_manager=self.data_manager)
         )
         self.calendar_container.add_calendar_tab(
-            "Month", CalendarMonthView(self.calendar_container, self.theme_colors)
+            "Month", CalendarMonthView(self.calendar_container, self.theme_colors, data_manager=self.data_manager)
         )
         self.calendar_container.pack(
             side="left", fill="both", expand=True, padx=self.WIDGET_PADDING, pady=self.WIDGET_PADDING

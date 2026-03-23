@@ -6,6 +6,8 @@ from calendar import Calendar, month_name as MONTHS, day_name as WEEKDAYS, month
 
 from typing import Optional, TYPE_CHECKING
 
+from src.data_local_manager import LocalDataManager
+
 if TYPE_CHECKING:  # Avoid circular imports during runtime
     from src.calendar_container import CalendarContainer
 
@@ -137,11 +139,13 @@ class CalendarView(Frame):
         self,
         parent: "CalendarContainer",
         theme_colors: dict[str, str],
+        data_manager: Optional[LocalDataManager] = None,
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
     ):
         self.theme_colors = theme_colors
+        self.data_manager = data_manager
         super().__init__(parent)
         # Initialize date to today if not provided
         today = datetime.date.today()
@@ -245,11 +249,12 @@ class CalendarMonthView(CalendarView):
         self,
         parent: CalendarContainer,
         theme_colors: dict[str, str],
+        data_manager: Optional[LocalDataManager] = None,
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
     ):
-        super().__init__(parent, theme_colors, year, month, day)
+        super().__init__(parent, theme_colors, data_manager, year, month, day)
 
     def build_calendar(self):
         """Build the month view calendar."""
@@ -292,11 +297,12 @@ class CalendarWeekView(CalendarView):
         self,
         parent: CalendarContainer,
         theme_colors: dict[str, str],
+        data_manager: Optional[LocalDataManager] = None,
         year: Optional[int] = None,
         month: Optional[int] = None,
         day: Optional[int] = None,
     ):
-        super().__init__(parent, theme_colors, year, month, day)
+        super().__init__(parent, theme_colors, data_manager, year, month, day)
 
     def build_calendar(self):
         """Build the week view calendar."""
