@@ -32,8 +32,7 @@ def exportToJSON(cur, outputPath):
     events = {}
 
     for row in rows:
-        event_name, date, start_time, end_time, room_id, building, campus, \
-            lec_first_name, lec_surname, stu_first_name, stu_surname = row
+        event_name, date, start_time, end_time, room_id, building, campus, lec_first_name, lec_surname, stu_first_name, stu_surname = row
 
         try:
             year, month, day = date.split("-")
