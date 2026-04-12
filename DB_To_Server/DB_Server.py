@@ -1,4 +1,3 @@
-
 import http.server
 import json
 import os
@@ -8,7 +7,7 @@ import sqlite3
 
 #database stuff
 def getConnection():
-    baseDir = os.getcwd()
+    baseDir = os.path.dirname(os.path.abspath(__file__))
     dbPath = os.path.join(baseDir, "bookingSystem.db")
     try:
         conn = sqlite3.connect(dbPath)
@@ -24,7 +23,8 @@ def eventsHandler():
     conn, cur = getConnection()
     if not conn:
         return None
-    outputPath = os.path.join(os.getcwd(), "events.json")
+    baseDir = os.path.dirname(os.path.abspath(__file__))
+    outputPath = os.path.join(baseDir, "events.json")
     calendar_data = DatabaseInteraction.exportToJSON(cur, outputPath)
     conn.close()
     return calendar_data
