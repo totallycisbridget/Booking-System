@@ -3,6 +3,896 @@
         "03": {
             "01": [
                 {
+                    "title": "Kickoff Meeting",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "A101",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Alice",
+                        "last_name": "Brown"
+                    }
+                },
+                {
+                    "title": "Planning Session",
+                    "start_time": "11:00",
+                    "end_time": "12:30",
+                    "room": {
+                        "roomID": "A210",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Noah",
+                        "last_name": "Wilson"
+                    }
+                },
+                {
+                    "title": "Team Sync",
+                    "start_time": "14:00",
+                    "end_time": "14:45",
+                    "room": {
+                        "roomID": "B204",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "David",
+                        "last_name": "Nguyen"
+                    }
+                }
+            ],
+            "02": [
+                {
+                    "title": "Email Catch-Up",
+                    "start_time": "09:00",
+                    "end_time": "09:30",
+                    "room": {
+                        "roomID": "C110",
+                        "building": "Admin Block",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Liam",
+                        "last_name": "Turner"
+                    }
+                },
+                {
+                    "title": "Sprint Kickoff",
+                    "start_time": "10:00",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "A305",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Sophia",
+                        "last_name": "Lee"
+                    }
+                },
+                {
+                    "title": "Documentation",
+                    "start_time": "15:00",
+                    "end_time": "16:00",
+                    "room": {
+                        "roomID": "D220",
+                        "building": "Library Wing",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Ethan",
+                        "last_name": "Clark"
+                    }
+                }
+            ],
+            "03": [
+                {
+                    "title": "Code Refactoring",
+                    "start_time": "13:00",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "B118",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Maya",
+                        "last_name": "Patel"
+                    }
+                }
+            ],
+            "04": [
+                {
+                    "title": "Standup",
+                    "start_time": "09:00",
+                    "end_time": "09:15",
+                    "room": {
+                        "roomID": "A102",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Isabella",
+                        "last_name": "Lopez"
+                    }
+                },
+                {
+                    "title": "Feature Development",
+                    "start_time": "09:30",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "B450",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "James",
+                        "last_name": "Walker"
+                    }
+                },
+                {
+                    "title": "Code Review",
+                    "start_time": "14:00",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "D120",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Charlotte",
+                        "last_name": "Hall"
+                    }
+                }
+            ],
+            "05": [
+                {
+                    "title": "Weekly Planning",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "A210",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Noah",
+                        "last_name": "Wilson"
+                    }
+                },
+                {
+                    "title": "Client Demo",
+                    "start_time": "11:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "E101",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Emma",
+                        "last_name": "Garcia"
+                    }
+                },
+                {
+                    "title": "Retrospective",
+                    "start_time": "16:00",
+                    "end_time": "16:45",
+                    "room": {
+                        "roomID": "B300",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Oliver",
+                        "last_name": "Smith"
+                    }
+                }
+            ],
+            "06": [
+                {
+                    "title": "Design Review",
+                    "start_time": "10:00",
+                    "end_time": "11:15",
+                    "room": {
+                        "roomID": "C205",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Ava",
+                        "last_name": "Johnson"
+                    }
+                },
+                {
+                    "title": "Prototype Testing",
+                    "start_time": "13:30",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "D410",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Lucas",
+                        "last_name": "Martinez"
+                    }
+                }
+            ],
+            "07": [
+                {
+                    "title": "Standup",
+                    "start_time": "09:00",
+                    "end_time": "09:15",
+                    "room": {
+                        "roomID": "A103",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Grace",
+                        "last_name": "Perez"
+                    }
+                },
+                {
+                    "title": "Development",
+                    "start_time": "09:30",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "B410",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Owen",
+                        "last_name": "Roberts"
+                    }
+                },
+                {
+                    "title": "Fixes",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "D118",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Chloe",
+                        "last_name": "Evans"
+                    }
+                }
+            ],
+            "08": [
+                {
+                    "title": "Bug Triage",
+                    "start_time": "10:00",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "B210",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Henry",
+                        "last_name": "Allen"
+                    }
+                }
+            ],
+            "09": [
+                {
+                    "title": "Architecture Discussion",
+                    "start_time": "09:30",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "E330",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Amelia",
+                        "last_name": "Young"
+                    }
+                },
+                {
+                    "title": "Implementation",
+                    "start_time": "13:00",
+                    "end_time": "16:00",
+                    "room": {
+                        "roomID": "D500",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Benjamin",
+                        "last_name": "King"
+                    }
+                }
+            ],
+            "10": [
+                {
+                    "title": "Planning",
+                    "start_time": "10:00",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "A401",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Evelyn",
+                        "last_name": "Scott"
+                    }
+                }
+            ],
+            "11": [
+                {
+                    "title": "Backlog Grooming",
+                    "start_time": "10:00",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "A401",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Evelyn",
+                        "last_name": "Scott"
+                    }
+                },
+                {
+                    "title": "Stakeholder Update",
+                    "start_time": "14:00",
+                    "end_time": "14:30",
+                    "room": {
+                        "roomID": "E120",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Daniel",
+                        "last_name": "Green"
+                    }
+                }
+            ],
+            "12": [
+                {
+                    "title": "Performance Review",
+                    "start_time": "09:00",
+                    "end_time": "10:00",
+                    "room": {
+                        "roomID": "C310",
+                        "building": "Admin Block",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Harper",
+                        "last_name": "Adams"
+                    }
+                },
+                {
+                    "title": "One-on-One",
+                    "start_time": "10:30",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "C311",
+                        "building": "Admin Block",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Jack",
+                        "last_name": "Bennett"
+                    }
+                },
+                {
+                    "title": "Planning Session",
+                    "start_time": "15:00",
+                    "end_time": "16:30",
+                    "room": {
+                        "roomID": "A500",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Ella",
+                        "last_name": "Carter"
+                    }
+                }
+            ],
+            "13": [
+                {
+                    "title": "Testing",
+                    "start_time": "13:00",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "D215",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Leo",
+                        "last_name": "Mitchell"
+                    }
+                }
+            ],
+            "14": [
+                {
+                    "title": "Daily Standup",
+                    "start_time": "09:00",
+                    "end_time": "09:15",
+                    "room": {
+                        "roomID": "A103",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Grace",
+                        "last_name": "Perez"
+                    }
+                },
+                {
+                    "title": "API Integration",
+                    "start_time": "09:30",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "B410",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Owen",
+                        "last_name": "Roberts"
+                    }
+                },
+                {
+                    "title": "Fixes",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "D118",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Chloe",
+                        "last_name": "Evans"
+                    }
+                }
+            ],
+            "15": [
+                {
+                    "title": "Product Review",
+                    "start_time": "10:00",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "E210",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Ryan",
+                        "last_name": "Turner"
+                    }
+                }
+            ],
+            "16": [
+                {
+                    "title": "Sprint Review",
+                    "start_time": "09:30",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "B305",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Zoe",
+                        "last_name": "Phillips"
+                    }
+                },
+                {
+                    "title": "Sprint Retro",
+                    "start_time": "11:15",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "B306",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Nathan",
+                        "last_name": "Campbell"
+                    }
+                },
+                {
+                    "title": "Roadmap Update",
+                    "start_time": "14:30",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "E115",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Lily",
+                        "last_name": "Parker"
+                    }
+                }
+            ],
+            "17": [
+                {
+                    "title": "Workshop",
+                    "start_time": "10:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "A600",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Aaron",
+                        "last_name": "Edwards"
+                    }
+                }
+            ],
+            "18": [
+                {
+                    "title": "UX Review",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "C410",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Hannah",
+                        "last_name": "Collins"
+                    }
+                },
+                {
+                    "title": "Accessibility Audit",
+                    "start_time": "11:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "C411",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Dylan",
+                        "last_name": "Stewart"
+                    }
+                }
+            ],
+            "19": [
+                {
+                    "title": "Development",
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "D510",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Victoria",
+                        "last_name": "Sanchez"
+                    }
+                },
+                {
+                    "title": "Code Review",
+                    "start_time": "13:30",
+                    "end_time": "14:30",
+                    "room": {
+                        "roomID": "B220",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Caleb",
+                        "last_name": "Morris"
+                    }
+                }
+            ],
+            "20": [
+                {
+                    "title": "System Testing",
+                    "start_time": "10:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "D300",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Nora",
+                        "last_name": "Rogers"
+                    }
+                }
+            ],
+            "21": [
+                {
+                    "title": "Release Prep",
+                    "start_time": "09:30",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "B500",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Isaac",
+                        "last_name": "Reed"
+                    }
+                },
+                {
+                    "title": "Release",
+                    "start_time": "15:00",
+                    "end_time": "16:00",
+                    "room": {
+                        "roomID": "E500",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Mila",
+                        "last_name": "Cook"
+                    }
+                }
+            ],
+            "22": [
+                {
+                    "title": "Review",
+                    "start_time": "10:00",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "E220",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Julian",
+                        "last_name": "Morgan"
+                    }
+                }
+            ],
+            "23": [
+                {
+                    "title": "Bug Fixing",
+                    "start_time": "13:00",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "D420",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Scarlett",
+                        "last_name": "Bell"
+                    }
+                }
+            ],
+            "24": [
+                {
+                    "title": "Monitoring",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "B130",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Connor",
+                        "last_name": "Murphy"
+                    }
+                }
+            ],
+            "25": [
+                {
+                    "title": "Team Meeting",
+                    "start_time": "10:00",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "A150",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Michael",
+                        "last_name": "Adams"
+                    }
+                },
+                {
+                    "title": "Planning",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "A151",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Olivia",
+                        "last_name": "Baker"
+                    }
+                }
+            ],
+            "26": [
+                {
+                    "title": "Team Meeting",
+                    "start_time": "09:00",
+                    "end_time": "10:00",
+                    "room": {
+                        "roomID": "A152",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "William",
+                        "last_name": "Davis"
+                    }
+                },
+                {
+                    "title": "Project Review",
+                    "start_time": "10:30",
+                    "end_time": "11:15",
+                    "room": {
+                        "roomID": "B330",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Emily",
+                        "last_name": "Hughes"
+                    }
+                },
+                {
+                    "title": "Client Call",
+                    "start_time": "13:30",
+                    "end_time": "14:00",
+                    "room": {
+                        "roomID": "E210",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Sophie",
+                        "last_name": "Ward"
+                    }
+                }
+            ],
+            "27": [
+                {
+                    "title": "Workshop",
+                    "start_time": "10:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "A600",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Aaron",
+                        "last_name": "Edwards"
+                    }
+                }
+            ],
+            "28": [
+                {
+                    "title": "UX Review",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "C410",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Hannah",
+                        "last_name": "Collins"
+                    }
+                },
+                {
+                    "title": "Accessibility Audit",
+                    "start_time": "11:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "C411",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Dylan",
+                        "last_name": "Stewart"
+                    }
+                }
+            ],
+            "29": [
+                {
+                    "title": "Development",
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "D510",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Victoria",
+                        "last_name": "Sanchez"
+                    }
+                },
+                {
+                    "title": "Code Review",
+                    "start_time": "13:30",
+                    "end_time": "14:30",
+                    "room": {
+                        "roomID": "B220",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Caleb",
+                        "last_name": "Morris"
+                    }
+                }
+            ],
+            "30": [
+                {
+                    "title": "Monthly Review",
+                    "start_time": "10:00",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "E310",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Thomas",
+                        "last_name": "Gray"
+                    }
+                },
+                {
+                    "title": "Wrap-up Meeting",
+                    "start_time": "14:00",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "A500",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Ella",
+                        "last_name": "Carter"
+                    }
+                }
+            ],
+            "31": [
+                {
+                    "title": "Planning Workshop",
+                    "start_time": "10:00",
+                    "end_time": "12:30",
+                    "room": {
+                        "roomID": "A600",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Aaron",
+                        "last_name": "Edwards"
+                    }
+                }
+            ]
+        },
+        "04": {
+            "01": [
+                {
                     "title": "New Year Planning",
                     "start_time": "10:00",
                     "end_time": "11:30",
@@ -726,8 +1616,939 @@
                         "last_name": "Gray"
                     }
                 }
+            ]
+        },
+        "05": {
+            "01": [
+                {
+                    "title": "Kickoff Meeting",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "A101",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Alice",
+                        "last_name": "Brown"
+                    }
+                },
+                {
+                    "title": "Planning Session",
+                    "start_time": "11:00",
+                    "end_time": "12:30",
+                    "room": {
+                        "roomID": "A210",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Noah",
+                        "last_name": "Wilson"
+                    }
+                },
+                {
+                    "title": "Team Sync",
+                    "start_time": "14:00",
+                    "end_time": "14:45",
+                    "room": {
+                        "roomID": "B204",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "David",
+                        "last_name": "Nguyen"
+                    }
+                }
             ],
-            "31": []
+            "02": [
+                {
+                    "title": "Email Catch-Up",
+                    "start_time": "09:00",
+                    "end_time": "09:30",
+                    "room": {
+                        "roomID": "C110",
+                        "building": "Admin Block",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Liam",
+                        "last_name": "Turner"
+                    }
+                },
+                {
+                    "title": "Sprint Kickoff",
+                    "start_time": "10:00",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "A305",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Sophia",
+                        "last_name": "Lee"
+                    }
+                },
+                {
+                    "title": "Documentation",
+                    "start_time": "15:00",
+                    "end_time": "16:00",
+                    "room": {
+                        "roomID": "D220",
+                        "building": "Library Wing",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Ethan",
+                        "last_name": "Clark"
+                    }
+                }
+            ],
+            "03": [
+                {
+                    "title": "Code Refactoring",
+                    "start_time": "13:00",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "B118",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Maya",
+                        "last_name": "Patel"
+                    }
+                },
+                {
+                    "title": "Bug Fixing",
+                    "start_time": "16:00",
+                    "end_time": "17:00",
+                    "room": {
+                        "roomID": "D420",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Scarlett",
+                        "last_name": "Bell"
+                    }
+                }
+            ],
+            "04": [
+                {
+                    "title": "Standup",
+                    "start_time": "09:00",
+                    "end_time": "09:15",
+                    "room": {
+                        "roomID": "A102",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Isabella",
+                        "last_name": "Lopez"
+                    }
+                },
+                {
+                    "title": "Feature Development",
+                    "start_time": "09:30",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "B450",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "James",
+                        "last_name": "Walker"
+                    }
+                },
+                {
+                    "title": "Code Review",
+                    "start_time": "14:00",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "D120",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Charlotte",
+                        "last_name": "Hall"
+                    }
+                }
+            ],
+            "05": [
+                {
+                    "title": "Weekly Planning",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "A210",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Noah",
+                        "last_name": "Wilson"
+                    }
+                },
+                {
+                    "title": "Client Demo",
+                    "start_time": "11:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "E101",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Emma",
+                        "last_name": "Garcia"
+                    }
+                },
+                {
+                    "title": "Retrospective",
+                    "start_time": "16:00",
+                    "end_time": "16:45",
+                    "room": {
+                        "roomID": "B300",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Oliver",
+                        "last_name": "Smith"
+                    }
+                }
+            ],
+            "06": [
+                {
+                    "title": "Design Review",
+                    "start_time": "10:00",
+                    "end_time": "11:15",
+                    "room": {
+                        "roomID": "C205",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Ava",
+                        "last_name": "Johnson"
+                    }
+                },
+                {
+                    "title": "Prototype Testing",
+                    "start_time": "13:30",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "D410",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Lucas",
+                        "last_name": "Martinez"
+                    }
+                }
+            ],
+            "07": [
+                {
+                    "title": "Standup",
+                    "start_time": "09:00",
+                    "end_time": "09:15",
+                    "room": {
+                        "roomID": "A103",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Grace",
+                        "last_name": "Perez"
+                    }
+                },
+                {
+                    "title": "Development",
+                    "start_time": "09:30",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "B410",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Owen",
+                        "last_name": "Roberts"
+                    }
+                },
+                {
+                    "title": "Fixes",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "D118",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Chloe",
+                        "last_name": "Evans"
+                    }
+                }
+            ],
+            "08": [
+                {
+                    "title": "Bug Triage",
+                    "start_time": "10:00",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "B210",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Henry",
+                        "last_name": "Allen"
+                    }
+                },
+                {
+                    "title": "Hotfix Deployment",
+                    "start_time": "11:30",
+                    "end_time": "12:30",
+                    "room": {
+                        "roomID": "B500",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Isaac",
+                        "last_name": "Reed"
+                    }
+                }
+            ],
+            "09": [
+                {
+                    "title": "Architecture Discussion",
+                    "start_time": "09:30",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "E330",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Amelia",
+                        "last_name": "Young"
+                    }
+                },
+                {
+                    "title": "Implementation",
+                    "start_time": "13:00",
+                    "end_time": "16:00",
+                    "room": {
+                        "roomID": "D500",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Benjamin",
+                        "last_name": "King"
+                    }
+                }
+            ],
+            "10": [
+                {
+                    "title": "Planning",
+                    "start_time": "10:00",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "A401",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Evelyn",
+                        "last_name": "Scott"
+                    }
+                }
+            ],
+            "11": [
+                {
+                    "title": "Backlog Grooming",
+                    "start_time": "10:00",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "A401",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Evelyn",
+                        "last_name": "Scott"
+                    }
+                },
+                {
+                    "title": "Stakeholder Update",
+                    "start_time": "14:00",
+                    "end_time": "14:30",
+                    "room": {
+                        "roomID": "E120",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Daniel",
+                        "last_name": "Green"
+                    }
+                }
+            ],
+            "12": [
+                {
+                    "title": "Performance Review",
+                    "start_time": "09:00",
+                    "end_time": "10:00",
+                    "room": {
+                        "roomID": "C310",
+                        "building": "Admin Block",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Harper",
+                        "last_name": "Adams"
+                    }
+                },
+                {
+                    "title": "One-on-One",
+                    "start_time": "10:30",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "C311",
+                        "building": "Admin Block",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Jack",
+                        "last_name": "Bennett"
+                    }
+                },
+                {
+                    "title": "Planning Session",
+                    "start_time": "15:00",
+                    "end_time": "16:30",
+                    "room": {
+                        "roomID": "A500",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Ella",
+                        "last_name": "Carter"
+                    }
+                }
+            ],
+            "13": [
+                {
+                    "title": "Testing",
+                    "start_time": "13:00",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "D215",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Leo",
+                        "last_name": "Mitchell"
+                    }
+                }
+            ],
+            "14": [
+                {
+                    "title": "Daily Standup",
+                    "start_time": "09:00",
+                    "end_time": "09:15",
+                    "room": {
+                        "roomID": "A103",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Grace",
+                        "last_name": "Perez"
+                    }
+                },
+                {
+                    "title": "API Integration",
+                    "start_time": "09:30",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "B410",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Owen",
+                        "last_name": "Roberts"
+                    }
+                },
+                {
+                    "title": "Fixes",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "D118",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Chloe",
+                        "last_name": "Evans"
+                    }
+                }
+            ],
+            "15": [
+                {
+                    "title": "Product Review",
+                    "start_time": "10:00",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "E210",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Ryan",
+                        "last_name": "Turner"
+                    }
+                },
+                {
+                    "title": "Client Feedback",
+                    "start_time": "11:30",
+                    "end_time": "12:30",
+                    "room": {
+                        "roomID": "E101",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Emma",
+                        "last_name": "Garcia"
+                    }
+                }
+            ],
+            "16": [
+                {
+                    "title": "Sprint Review",
+                    "start_time": "09:30",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "B305",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Zoe",
+                        "last_name": "Phillips"
+                    }
+                },
+                {
+                    "title": "Sprint Retro",
+                    "start_time": "11:15",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "B306",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Nathan",
+                        "last_name": "Campbell"
+                    }
+                },
+                {
+                    "title": "Roadmap Update",
+                    "start_time": "14:30",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "E115",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Lily",
+                        "last_name": "Parker"
+                    }
+                }
+            ],
+            "17": [
+                {
+                    "title": "Workshop",
+                    "start_time": "10:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "A600",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Aaron",
+                        "last_name": "Edwards"
+                    }
+                }
+            ],
+            "18": [
+                {
+                    "title": "UX Review",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "C410",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Hannah",
+                        "last_name": "Collins"
+                    }
+                },
+                {
+                    "title": "Accessibility Audit",
+                    "start_time": "11:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "C411",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Dylan",
+                        "last_name": "Stewart"
+                    }
+                }
+            ],
+            "19": [
+                {
+                    "title": "Development",
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "D510",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Victoria",
+                        "last_name": "Sanchez"
+                    }
+                },
+                {
+                    "title": "Code Review",
+                    "start_time": "13:30",
+                    "end_time": "14:30",
+                    "room": {
+                        "roomID": "B220",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Caleb",
+                        "last_name": "Morris"
+                    }
+                }
+            ],
+            "20": [
+                {
+                    "title": "System Testing",
+                    "start_time": "10:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "D300",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Nora",
+                        "last_name": "Rogers"
+                    }
+                }
+            ],
+            "21": [
+                {
+                    "title": "Release Prep",
+                    "start_time": "09:30",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "B500",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Isaac",
+                        "last_name": "Reed"
+                    }
+                },
+                {
+                    "title": "Release",
+                    "start_time": "15:00",
+                    "end_time": "16:00",
+                    "room": {
+                        "roomID": "E500",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Mila",
+                        "last_name": "Cook"
+                    }
+                }
+            ],
+            "22": [
+                {
+                    "title": "Review",
+                    "start_time": "10:00",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "E220",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Julian",
+                        "last_name": "Morgan"
+                    }
+                }
+            ],
+            "23": [
+                {
+                    "title": "Bug Fixing",
+                    "start_time": "13:00",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "D420",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Scarlett",
+                        "last_name": "Bell"
+                    }
+                }
+            ],
+            "24": [
+                {
+                    "title": "Monitoring",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "B130",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Connor",
+                        "last_name": "Murphy"
+                    }
+                }
+            ],
+            "25": [
+                {
+                    "title": "Team Meeting",
+                    "start_time": "10:00",
+                    "end_time": "11:00",
+                    "room": {
+                        "roomID": "A150",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Michael",
+                        "last_name": "Adams"
+                    }
+                },
+                {
+                    "title": "Planning",
+                    "start_time": "14:00",
+                    "end_time": "15:30",
+                    "room": {
+                        "roomID": "A151",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Olivia",
+                        "last_name": "Baker"
+                    }
+                }
+            ],
+            "26": [
+                {
+                    "title": "Team Meeting",
+                    "start_time": "09:00",
+                    "end_time": "10:00",
+                    "room": {
+                        "roomID": "A152",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "William",
+                        "last_name": "Davis"
+                    }
+                },
+                {
+                    "title": "Project Review",
+                    "start_time": "10:30",
+                    "end_time": "11:15",
+                    "room": {
+                        "roomID": "B330",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Emily",
+                        "last_name": "Hughes"
+                    }
+                },
+                {
+                    "title": "Client Call",
+                    "start_time": "13:30",
+                    "end_time": "14:00",
+                    "room": {
+                        "roomID": "E210",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Sophie",
+                        "last_name": "Ward"
+                    }
+                }
+            ],
+            "27": [
+                {
+                    "title": "Workshop",
+                    "start_time": "10:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "A600",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Aaron",
+                        "last_name": "Edwards"
+                    }
+                }
+            ],
+            "28": [
+                {
+                    "title": "UX Review",
+                    "start_time": "09:30",
+                    "end_time": "10:30",
+                    "room": {
+                        "roomID": "C410",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Hannah",
+                        "last_name": "Collins"
+                    }
+                },
+                {
+                    "title": "Accessibility Audit",
+                    "start_time": "11:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "C411",
+                        "building": "Design Hub",
+                        "campus": "West"
+                    },
+                    "lecturer": {
+                        "first_name": "Dylan",
+                        "last_name": "Stewart"
+                    }
+                }
+            ],
+            "29": [
+                {
+                    "title": "Development",
+                    "start_time": "09:00",
+                    "end_time": "12:00",
+                    "room": {
+                        "roomID": "D510",
+                        "building": "Engineering Block",
+                        "campus": "East"
+                    },
+                    "lecturer": {
+                        "first_name": "Victoria",
+                        "last_name": "Sanchez"
+                    }
+                },
+                {
+                    "title": "Code Review",
+                    "start_time": "13:30",
+                    "end_time": "14:30",
+                    "room": {
+                        "roomID": "B220",
+                        "building": "Tech Center",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Caleb",
+                        "last_name": "Morris"
+                    }
+                }
+            ],
+            "30": [
+                {
+                    "title": "Monthly Review",
+                    "start_time": "10:00",
+                    "end_time": "11:30",
+                    "room": {
+                        "roomID": "E310",
+                        "building": "Business Tower",
+                        "campus": "Central"
+                    },
+                    "lecturer": {
+                        "first_name": "Thomas",
+                        "last_name": "Gray"
+                    }
+                },
+                {
+                    "title": "Wrap-up Meeting",
+                    "start_time": "14:00",
+                    "end_time": "15:00",
+                    "room": {
+                        "roomID": "A500",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Ella",
+                        "last_name": "Carter"
+                    }
+                }
+            ],
+            "31": [
+                {
+                    "title": "Planning Workshop",
+                    "start_time": "10:00",
+                    "end_time": "12:30",
+                    "room": {
+                        "roomID": "A600",
+                        "building": "Innovation Hall",
+                        "campus": "North"
+                    },
+                    "lecturer": {
+                        "first_name": "Aaron",
+                        "last_name": "Edwards"
+                    }
+                }
+            ]
         }
     }
 }
