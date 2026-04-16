@@ -1,6 +1,5 @@
 import sqlite3
 import json
-import os
 
 
 def exportToJSON(cur, outputPath):
@@ -9,15 +8,15 @@ def exportToJSON(cur, outputPath):
             SELECT
                 e.EventName,
                 e.Date,
-                COALESCE(e.StartTime, SUBSTR(e.Time, 1, INSTR(e.Time, '-') - 1)),
-                COALESCE(e.EndTime,   SUBSTR(e.Time, INSTR(e.Time, '-') + 1)),
+                e.StartTime,
+                e.EndTime,
                 e.RoomID,
                 lec.Name,
                 lec.Surname
             FROM event e
             LEFT JOIN lecturer lec ON e.LecturerID = lec.LecturerID
             LEFT JOIN student s ON e.StudentID = s.StudentID
-            ORDER BY e.Date, e.Time
+            ORDER BY e.Date, e.StartTime
             """)
     except sqlite3.Error as e:
         print(f"Query failed: {e}")
